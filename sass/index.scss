@@ -1,0 +1,300 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@import "variables";
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: $light-grayish-cyan;
+  @include flexCenter();
+
+  @include sm {
+    @include flexCenter($a: block);
+    justify-content: center;
+  }
+}
+
+.container {
+  width: 50%;
+  height: 65%;
+  @include flexCenter($b: space-between, $c: none);
+  flex-direction: column;
+  // border: 1px solid blue;
+
+  @include sm {
+    width: 100%;
+    height: 100%;
+    @include flexCenter($a: block, $b: center);
+  }
+
+  .heading {
+    width: 10%;
+    height: 10%;
+    color: $very-dark-cyan;
+    margin: 0 auto;
+    // border: 1px solid red;
+
+    @include sm {
+      width: 20%;
+      padding: 3px;
+    }
+  }
+
+  .calculator-container {
+    width: 100%;
+    height: 75%;
+    background-color: $white;
+    border-radius: 12px;
+    padding: 20px;
+    @include flexCenter($b: space-between, $c: none);
+
+    @include sm {
+      padding: 10px;
+      @include flexCenter($b: center);
+      flex-direction: column;
+    }
+
+    .tip-cont {
+      width: 48%;
+      height: 100%;
+      // border: 2px solid gold;
+      @include sm {
+        width: 100%;
+      }
+
+      form {
+        width: 100%;
+        height: 100%;
+
+        label {
+          color: $dark-grayish-cyan;
+          font-weight: $weights;
+        }
+
+        .bill-cont {
+          width: 100%;
+          height: 13%;
+          background-color: $very-light-grayish-cyan;
+          @include flexCenter($b: space-between, $c: none);
+          border-radius: 3px;
+          margin: 7px 0;
+
+          &:hover {
+            border: 2px solid $strong-cyan;
+          }
+
+          .dollar-img {
+            width: 15px;
+            height: 20px;
+            padding: 3px;
+            margin: 12px;
+          }
+
+          .bill {
+            width: 70%;
+            height: 100%;
+            font-size: 1.2rem;
+            font-weight: $weights;
+            text-align: right;
+            color: $very-dark-cyan;
+            border: none;
+            outline: none;
+            background-color: $very-light-grayish-cyan;
+            cursor: pointer;
+          }
+        }
+
+        .select-tip {
+          width: 100%;
+          height: 50%;
+          margin: 5px 0;
+          @include flexCenter($b: space-between, $c: none);
+          flex-direction: column;
+          // border: 2px solid red;
+
+          .tip-fields {
+            width: 100%;
+            height: 80%;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            // gap: 15px;
+            align-self: self-start;
+            // border: 1px solid rgb(10, 1, 63);
+
+            input[type="submit"] {
+              width: 85%;
+              height: 65%;
+              background-color: $very-dark-cyan;
+              color: $white;
+              font-size: 1.2rem;
+              font-weight: $weights;
+              padding: 10px;
+              margin: 5px;
+              outline: none;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+
+              &.active {
+                background-color: $strong-cyan;
+                color: $very-dark-cyan;
+              }
+            }
+
+            .custom {
+              width: 85%;
+              height: 70%;
+              background-color: $very-light-grayish-cyan;
+              color: $grayish-cyan;
+              font-size: 1rem;
+              font-weight: $weights;
+              text-align: center;
+              padding: 10px;
+              margin: 5px;
+              outline: none;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+
+              @include sm {
+                font-size: 0.85rem;
+              }
+
+              &:hover {
+                border: 2px solid $strong-cyan;
+              }
+            }
+          }
+        }
+
+        .btn-container {
+          width: 100%;
+          height: 25%;
+          margin: 10px 0;
+          // border: 1px solid blue;
+
+          .text {
+            @include flexCenter($b: space-between, $c: none);
+
+            .zero-text {
+              color: red;
+            }
+          }
+
+          .ppl-cont {
+            width: 100%;
+            height: 55%;
+            background-color: $very-light-grayish-cyan;
+            @include flexCenter($b: space-between, $c: none);
+            border-radius: 3px;
+            margin: 7px 0;
+
+            &:hover {
+              border: 2px solid $strong-cyan;
+            }
+
+            .person-img {
+              width: 20px;
+              height: 25px;
+              padding: 3px;
+              margin: 10px;
+            }
+
+            .people {
+              width: 70%;
+              height: 100%;
+              font-size: 1.2rem;
+              font-weight: $weights;
+              text-align: right;
+              color: $very-dark-cyan;
+              border: none;
+              outline: none;
+              background-color: $very-light-grayish-cyan;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .result-cont {
+      width: 48%;
+      height: 100%;
+      background-color: $very-dark-cyan;
+      color: $white;
+      border-radius: 5px;
+      padding: 15px;
+
+      @include sm {
+        width: 100%;
+        height: 70%;
+      }
+    }
+
+    .tip-amount {
+      width: 100%;
+      height: 20%;
+      margin: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      // border: 1px solid pink;
+
+      @include sm {
+        height: 30%;
+      }
+
+      span {
+        color: $light-grayish-cyan;
+        padding: 10px;
+      }
+
+      #amount,
+      #total {
+        color: $strong-cyan;
+      }
+    }
+
+    .reset-cont {
+      width: 100%;
+      height: 40%;
+      // border: 1px solid yellow;
+
+      @include sm {
+        height: 20%;
+      }
+
+      .reset-btn {
+        width: 100%;
+        height: 35%;
+        border-radius: 5px;
+        margin: 20% 0 0 0;
+        background-color: $strong-cyan;
+        color: $very-dark-cyan;
+        border: none;
+        outline: none;
+        font-size: 0.93rem;
+        font-weight: $weights;
+        cursor: pointer;
+
+        @include sm {
+          height: 75%;
+          margin: 3px 0 0 0;
+        }
+
+        &:hover {
+          background-color: $light-grayish-cyan;
+        }
+
+        &.disable {
+          color: rgba(128, 128, 128, 0.275);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
